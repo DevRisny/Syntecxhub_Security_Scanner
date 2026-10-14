@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "syntecxhub-security-scanner"
+version = "1.0.0"
+description = "Passive web security scanner: missing headers, insecure cookies, information disclosure, weak TLS"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Junaideen Risny Suha" }]
+dependencies = ["requests>=2.31"]
+keywords = ["cybersecurity", "security-headers", "owasp", "web-scanner"]
+
+[project.optional-dependencies]
+dev = ["ruff"]
+demo = ["flask"]
+
+[project.scripts]
+secscan = "syntecxhub_scanner.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["UP006", "UP007", "UP035", "UP045"]
